@@ -1,0 +1,21 @@
+{
+  "short_name": "FlappyEi",
+  "name": "Flappy Ei Spiel",
+  "icons": [
+    {
+      "src": ".vscode/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": ".vscode/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "index.html",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#000000"
+}

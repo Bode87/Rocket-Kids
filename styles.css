@@ -1,0 +1,192 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: 'Roboto', sans-serif; /* Moderne Schriftart */
+    overflow: hidden;
+}
+
+#spielbereich {
+    width: 900px;
+    height: 600px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+@keyframes pulsate {
+    0% { transform: scale(0.5); opacity: 0.5; }
+    50% { transform: scale(1.0); opacity: 1; }
+    100% { transform: scale(0.5); opacity: 0.5; }
+}
+  
+  #startBildschirm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #000; /* Schwarzer Hintergrund */
+    overflow: hidden;
+  }
+  
+  
+  .light {
+    width: 5px; /* Größe der Lichtpunkte */
+    height: 5px; /* Größe der Lichtpunkte */
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    animation: pulsate 2s infinite ease-in-out;
+}
+  
+
+
+#startBildschirm h1 {
+    color: #fff;
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+#startBildschirm button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background-color: #4CAF50; /* Akzentfarbe */
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s; /* Sanfter Übergang für Hover-Effekt */
+}
+
+#startBildschirm button:hover {
+    background-color: #45a049; /* Dunklere Akzentfarbe beim Hover */
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modalContent {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Fügt Schatten hinzu */
+    transition: 0.3s; /* Sanfter Übergang beim Öffnen */
+}
+
+.closeButton {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closeButton:hover,
+.closeButton:focus {
+    color: rgb(241, 236, 236);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#scoreboard {
+    position: absolute;
+    bottom: 0; /* Positioniert das Element am unteren Rand */
+    left: 50%; /* Setzt das Element in die Mitte */
+    transform: translateX(-50%); /* Verschiebt das Element um die Hälfte seiner Breite nach links, um es zentriert auszurichten */
+    width: 300px; /* Breite des Elements */
+    background-color: #52b922; /* Hintergrundfarbe */
+    overflow-y: auto; /* Erlaubt Scrollen, falls mehr als 20 Einträge vorhanden sind */
+    max-height: 600px; /* Setzt eine maximale Höhe */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Fügt Schatten hinzu */
+    border-radius: 5px; /* Abgerundete Ecken */
+}
+
+
+#scoreListe {
+    list-style-type: none; /* Entfernt Aufzählungszeichen */
+    padding: 0;
+    margin: 0;
+}
+
+#scoreListe li {
+    padding: 5px;
+    border-bottom: 1px solid #ddd; /* Fügt eine Linie zwischen den Einträgen hinzu */
+    font-size: 16px; /* Stellt die Schriftgröße ein */
+}
+
+#scoreListe li:nth-child(-n+20) {
+    /* Stile für die Top 20 Einträge */
+    font-weight: bold;
+}
+
+#beendenButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #ff5555;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s; /* Sanfter Übergang für Hover-Effekt */
+}
+
+#beendenButton:hover {
+    background-color: #ff4444; /* Dunklere Farbe beim Hover */
+}
+#spielEndeFormular {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff; /* Weiße Hintergrundfarbe */
+    padding: 20px;
+    border-radius: 10px; /* Abgerundete Ecken */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Schatten für das Fenster */
+    width: 300px; /* Breite des Fensters */
+}
+
+#spielEndeFormular input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#spielEndeFormular button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #4CAF50; /* Akzentfarbe */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Sanfter Übergang für Hover-Effekt */
+}
+
+#spielEndeFormular button:hover {
+    background-color: #45a049; /* Dunklere Akzentfarbe beim Hover */
+}

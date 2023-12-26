@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flappy Ei Spiel</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="apple-touch-icon" href="path/to/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div id="startBildschirm">
+        <h1>Rocket-KIDS</h1>
+        <button id="startButton">Spiel Starten</button>
+        <button id="anleitungButton">Anleitung</button>
+        <div id="scoreboard">
+            <h2>Scoreboard</h2>
+            <ul id="scoreListe">
+                <!-- Hier werden die Scores aufgelistet -->
+            </ul>
+        </div>
+    </div>
+    
+    <div id="anleitungModal" class="modal">
+        <div class="modalContent">
+            <span class="closeButton">&times;</span>
+            <h2>Spielanleitung</h2>
+            <p>Steuer deine Rakete durch den Weltraum und sammle so viele Punkte wie möglich, indem du den Hindernissen ausweichst. Hier ist deine Steuerung:</p>
+            <div class="controls">
+                <kbd>↑</kbd> <span>- Steigt</span><br>
+                <kbd>→</kbd> <span>- Bewegt sich nach rechts</span><br>
+                <kbd>←</kbd> <span>- Bewegt sich nach links</span>
+            </div>
+            <p>Ziel des Spiels ist es, so lange wie möglich zu überleben und eine hohe Punktzahl zu erreichen, indem du Hindernissen ausweichst. Jedes Mal, wenn du einem Hindernis ausweichst, erhältst du Punkte. Wie hoch kannst du scoren?</p>
+            <p>Viel Erfolg!</p>
+        </div>
+    </div>
+    
+    <div id="spielbereich" style="background-color: red;"></div>
+
+    <div id="spielEndeFormular" style="display: none;">
+        <p id="finalScore">Dein Score: </p>
+        <input type="text" id="spielerName" placeholder="Dein Name">
+        <button id="speichernButton">Speichern</button>
+        <button id="weiterButton">Weiter</button>
+    </div>
+
+    <audio id="hintergrundMusik" loop>
+        <source src="catch-it-117676.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="kollisionTon" preload="auto">
+        <source src="kollision.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="gasgebenTon" preload="auto">
+        <source src="gasgeben.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+            .then(function() { console.log('Service Worker Registered'); });
+        }
+    </script>
+    <script src="p5.js"></script>
+    <script src="flappyEi.js"></script>
+    <script>
+    // Fügen Sie hier den JavaScript-Code ein, um Sterne und Lichter zu erzeugen
+    function createStarsAndLights() {
+        const numberOfStars = 100; // Anzahl der Sterne
+        const numberOfLights = 200; // Anzahl der Lichter, jetzt auf 10 erhöht
+        const startScreen = document.getElementById('startBildschirm');
+
+        // Lichter erzeugen
+        for (let i = 0; i < numberOfLights; i++) {
+            let light = document.createElement('div');
+            light.className = 'light';
+            positionLight(light);
+            startScreen.appendChild(light);
+            // Ändere die Position nach jedem Pulsieren
+            light.addEventListener('animationiteration', () => {
+                positionLight(light);
+            });
+        }
+    }
+    function positionLight(light) {
+        light.style.top = `${Math.random() * 100}%`;
+        light.style.left = `${Math.random() * 100}%`;
+    }
+
+    // Aufruf der Funktion, wenn das Dokument geladen ist
+    document.addEventListener('DOMContentLoaded', createStarsAndLights);
+    </script>
+</body>
+</html>
